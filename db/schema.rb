@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_13_175725) do
+ActiveRecord::Schema.define(version: 2023_07_14_185642) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2023_07_13_175725) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "percent"
   end
 
   create_table "users", force: :cascade do |t|
