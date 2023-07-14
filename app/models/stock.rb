@@ -7,7 +7,7 @@ class Stock < ApplicationRecord
                                         endpoint: 'https://cloud.iexapis.com/v1'
         )
         begin
-            new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, price: client.price(ticker_symbol), percent: client.quote(ticker_symbol).change_percent_s)
+            new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, price: client.price(ticker_symbol), percent: client.quote(ticker_symbol).change_percent_s, image: client.logo(ticker_symbol).url)
         rescue => e
             puts e.class
             puts e.message
