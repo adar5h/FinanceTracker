@@ -3,7 +3,7 @@
 </div>
 <div class="search-area">
     <h3>Search Stocks</h3>
-    <%= form_tag search_stocks_path, method: :get do %>
+    <%= form_tag search_stocks_path, remote: true,  method: :get do %>
         <div class="form-group row">
             <div class="col-sm-9 no-right-padding">
                 <%= text_field_tag :stock, params[:stock], placeholder:"Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
@@ -17,12 +17,4 @@
     <% end %>
 </div>
 
-<% if @stock %>
-    <div class="card card-header results">
-        <strong>Symbol: </strong><%= @stock.ticker %>
-        <strong>Name: </strong><%= @stock.name %>
-        <strong>Price: </strong><%= @stock.price %>
-        <strong>Percent: </strong><%= @stock.percent %>
-        <%= @stock.percent > 0 ? fa_icon('arrow-up',style: 'color: green;') : fa_icon('arrow-down', style: 'color: red;') %>
-    </div>
-<% end %>
+<%= render 'users/results' %>

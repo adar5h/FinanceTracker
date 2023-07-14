@@ -1,0 +1,9 @@
+<% if @stock %>
+    <div class="card card-header results">
+        <strong>Symbol: </strong><%= @stock.ticker %>
+        <strong>Name: </strong><%= @stock.name %>
+        <strong>Price: </strong><%= @stock.price %>
+        <strong>Percent: </strong><%= @stock.percent %>
+        <%= @stock.percent > 0 ? fa_icon('arrow-up',style: 'color: green;') : fa_icon('arrow-down', style: 'color: red;') %>
+    </div>
+<% end %>
