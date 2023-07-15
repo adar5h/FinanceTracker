@@ -5,7 +5,7 @@
     <div class="card card-header results">
         <strong>Symbol: </strong><%= @stock.ticker %>
         <strong>Name: </strong><%= @stock.name %>
-        <%= image_tag @stock.image, style: 'height:40px; width:40px;' %>
+        <%= image_tag @stock.image, class: "logo" %>
         <strong>Price: </strong><%= @stock.price %>
         <strong>Percent: </strong><%= @stock.percent %>
         <%= @stock.percent > 0 ? fa_icon('arrow-up',style: 'color: green;') : fa_icon('arrow-down', style: 'color: red;') %>
