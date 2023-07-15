@@ -2,6 +2,8 @@ class Stock < ApplicationRecord
     has_many :user_stocks
     has_many :users, through: :user_stocks
     validates :name, :ticker, presence:true
+    before_save { self.ticker = ticker.upcase() }
+    before_save { self.name = name.capitalize() }
 
     def self.new_lookup ticker_symbol #class methods => doesn't need an instance of stock class, we can directly call on the stock class
         client = IEX::Api::Client.new(
