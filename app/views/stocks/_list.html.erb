@@ -2,7 +2,8 @@
     <div class="col-10">
         <table class="table table-bordered table-hover">
         <thead class="thead-dark">
-            <tr>
+            <tr align="center">
+            <th scope="col">Company</th>
             <th scope="col">Ticker</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
@@ -12,11 +13,16 @@
         </thead>
         <tbody>
             <% @tracked_stocks.each do |stock| %>
-                <tr>
-                <th scope="row"><%= stock.ticker %><%= image_tag stock.image, class: "logo" if stock.image %></th>
+                <tr align="center">
+                <td class="logo-name"><%= image_tag stock.image, class: "logo" if stock.image %></td>
+                <th><%= stock.ticker %></th>
                 <td><%= stock.name %></td>
                 <td><%= stock.price %></td>
-                <td><%= stock.percent %></td>
+                <% if stock.percent %>
+                    <td><%= stock.percent %>
+                    <%= stock.percent > 0 ? fa_icon('arrow-up',style: 'color: green;') : fa_icon('arrow-down', style: 'color: red;') %>
+                </td>
+                <% end %>
                 </tr>
             <% end %>
         </tbody>
