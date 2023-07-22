@@ -11,7 +11,7 @@
             <th scope="col">Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class='cent'>
             <% @tracked_stocks.each do |stock| %>
                 <tr align="center">
                 <td class="logo-name"><%= image_tag stock.image, class: "logo" if stock.image %></td>
@@ -22,6 +22,7 @@
                     <td><%= stock.percent %>
                     <%= stock.percent > 0 ? fa_icon('arrow-up',style: 'color: green;') : fa_icon('arrow-down', style: 'color: red;') %>
                 </td>
+                <td><%= link_to 'Remove', user_stock_path( stock.id ), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-warning"%></td>
                 <% end %>
                 </tr>
             <% end %>

@@ -1,6 +1,6 @@
 class Stock < ApplicationRecord
-    has_many :user_stocks
-    has_many :users, through: :user_stocks
+    has_many :user_stocks, dependent: :destroy
+    has_many :users, through: :user_stocks, dependent: :destroy
     validates :name, :ticker, presence:true
     before_save { self.ticker = ticker.upcase() }
     before_save { self.name = name.capitalize() }
@@ -12,7 +12,7 @@ class Stock < ApplicationRecord
                                         endpoint: 'https://cloud.iexapis.com/v1'
         )
         begin
-            new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, price: client.price(ticker_symbol), percent: client.quote(ticker_symbol).change_percent_s, image: client.logo(ticker_symbol).url)
+            new(ticker: ticker_symbol.upcase, name: client.company(ticker_symbol).company_name, price: client.quote(ticker_symbol).latest_price, percent: client.quote(ticker_symbol).change_percent_s, image: client.logo(ticker_symbol).url)
         rescue => e
             puts e.class
             puts e.message
