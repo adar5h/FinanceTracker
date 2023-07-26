@@ -30,6 +30,7 @@ class Stock < ApplicationRecord
       stock = Stock.check_db symbol
       return false if stock.percent >= percentage
       stock.update!(price: price, percent: percentage)
+      return true
     end
 
 end
