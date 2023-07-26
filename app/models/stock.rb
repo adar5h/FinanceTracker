@@ -22,8 +22,14 @@ class Stock < ApplicationRecord
         
     end
 
-    def self.check_db(ticker_symbol)
+    def self.check_db ticker_symbol
         where(ticker: ticker_symbol).first
+    end
+
+    def is_updated? symbol, price, percentage
+      stock = Stock.check_db symbol
+      return false if stock.percent >= percentage
+      stock.update!(price: price, percent: percentage)
     end
 
 end
