@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get 'search_friends', to: 'users#search'
   get 'friends', to: 'users#friends' 
   resources :friendships, only: [:create, :destroy]
+  resources :users, only: [:show]
+  get '/dev', to: redirect('https://www.github.com/adar5h')
+  get 'send_email', to: 'application#send_email', as: :send_email
 end

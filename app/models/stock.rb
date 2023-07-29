@@ -23,7 +23,6 @@ class Stock < ApplicationRecord
     end
 
     def self.check_db ticker_symbol
-        debugger
         where(ticker: ticker_symbol).first
     end
 
