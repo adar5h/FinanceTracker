@@ -17,7 +17,7 @@
                         <th><%= friend.first_name%></th>
                         <th><%= friend.last_name%></th>
                         <td><%= friend.stocks.count %></td>
-                        <td><%= link_to 'Stop following', user_stock_path(friend.id), data: {confirm: "Are you sure?"} ,method: :delete, class: "btn btn-sm btn-warning"%></td>
+                        <td><%= link_to 'Stop following', friendship_path(friend), data: {confirm: "Are you sure?"} ,method: :delete, class: "btn btn-sm btn-warning"%></td>
                     </tr>
                 <% end %>
             </tbody>
